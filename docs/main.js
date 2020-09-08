@@ -9,6 +9,8 @@ async function start() {
     } catch (e) {
         console.log("There was a problem fetching the breed list.")
     }
+
+    play_random_dogs()
 }
 
 start()
@@ -29,7 +31,17 @@ async function loadByBreed(breed) {
         const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`)
         const data = await response.json()
         createSlideshow(data.message)
+    } else {
+        const response = await fetch(`https://dog.ceo/api/breeds/image/random/50`)
+        const data = await response.json()
+        createSlideshow(data.message)
     }
+}
+
+async function play_random_dogs(){
+    const response = await fetch(`https://dog.ceo/api/breeds/image/random/50`)
+    const data = await response.json()
+    createSlideshow(data.message)
 }
 
 function createSlideshow(images) {
