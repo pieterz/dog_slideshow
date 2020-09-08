@@ -9,7 +9,6 @@ async function start() {
     } catch (e) {
         console.log("There was a problem fetching the breed list.")
     }
-
     play_random_dogs()
 }
 
